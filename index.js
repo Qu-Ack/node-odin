@@ -25,6 +25,16 @@ const server = https.createServer((req, res) => {
             res.end(data, 'utf-8')
         })
     }
+    else if (req.url == '/contact-me') {
+        fs.readFile(path.join(__dirname, 'contact-me.html'), (err, data) => {
+            if(err)
+            {
+                return err
+            }
+            res.writeHead(200, {'Content-Type': 'text/html'})
+            res.end(data, 'utf-8');
+        })
+    }
     else {
         fs.readFile(path.join(__dirname, '404.html'), (err, data) => {
             if (err)
